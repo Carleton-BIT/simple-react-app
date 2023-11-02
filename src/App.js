@@ -36,6 +36,7 @@ class App extends Component {
               // It's used by React to identify items in a list, so React can change,
               // add, and remove different elements. Keys must be unique.
               key={item.id}
+              className="list-group-item d-flex justify-content-between align-items-center"
           >
             <span title={item.description}>{todoTitle}</span>
           </li>
@@ -46,13 +47,18 @@ class App extends Component {
   };
 
   render() {
-    // This is the same as:
-    // const newItemText = this.state.newItemText;
-    // const todoList = this.state.todoList;
     return (
-        <ul>
-          {this.renderItems()}
-        </ul>
+        <main className="container">
+          <div className="row">
+            <div className="col-md-6 col-sm-10 mt-4 mx-auto p-0">
+              <div className="card p-3">
+                <ul className="list-group list-group-flush border-top-0">
+                  {this.renderItems()}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </main>
     );
   }
 }
