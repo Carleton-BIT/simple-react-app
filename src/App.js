@@ -39,12 +39,31 @@ class App extends Component {
               className="list-group-item d-flex justify-content-between align-items-center"
           >
             <span title={item.description}>{todoTitle}</span>
+            <button className="btn btn-danger" onClick={() => this.deleteItem(item.id)}>
+                Delete
+            </button>
           </li>
       );
     }
 
     return listItems;
   };
+
+  // Function to delete an item
+  deleteItem = (id) => {
+    // Filter creates a new array with all elements that pass the test implemented by the provided function
+    // Here the arrow function is "item => item.id !== id"
+    // This is equivalent to
+    // function myFunction(item, id) {
+    //   if item.id !== id {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // };
+    const filteredItems = this.state.todoList.filter(item => item.id !== id);
+    this.setState({ todoList: filteredItems });
+  }
 
   render() {
     return (
